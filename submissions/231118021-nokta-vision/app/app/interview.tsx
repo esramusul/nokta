@@ -131,7 +131,7 @@ export default function InterviewScreen() {
             <TextInput
               style={styles.input}
               placeholder="Düşünceni yaz..."
-              placeholderTextColor="rgba(255,255,255,0.18)"
+              placeholderTextColor="rgba(255,255,255,0.30)"
               multiline
               value={currentAnswer}
               onChangeText={setCurrentAnswer}

@@ -82,7 +82,7 @@ export default function WelcomeScreen() {
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={idea.trim() ? ['#8B00FF', '#6000CC'] : ['#2A2A2A', '#1A1A1A']}
+                colors={idea.trim() ? ['#9D00FF', '#6000CC'] : ['#2A2A2A', '#1A1A1A']}
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
                 style={styles.buttonGradient}
               >
@@ -91,6 +91,16 @@ export default function WelcomeScreen() {
               </LinearGradient>
             </TouchableOpacity>
           </Animated.View>
+
+          {/* Uzman Desteği Butonu */}
+          <TouchableOpacity 
+            style={styles.expertButton} 
+            onPress={() => router.push('/expert')}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="people-circle-outline" size={20} color="#A855F7" />
+            <Text style={styles.expertButtonText}>Stratejik Uzman Desteği Al</Text>
+          </TouchableOpacity>
 
           {/* Alt bilgi */}
           <View style={styles.bottomInfo}>
@@ -190,4 +200,21 @@ const styles = StyleSheet.create({
   },
   stepNumText: { color: '#A855F7', fontSize: 12, fontWeight: '800' },
   stepText: { color: 'rgba(255,255,255,0.35)', fontSize: 11, fontWeight: '500' },
+  expertButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingVertical: 12,
+    marginBottom: 32,
+    backgroundColor: 'rgba(168, 85, 247, 0.1)',
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(168, 85, 247, 0.2)',
+  },
+  expertButtonText: {
+    color: '#A855F7',
+    fontSize: 14,
+    fontWeight: '600',
+  },
 });
