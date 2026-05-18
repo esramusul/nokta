@@ -125,9 +125,15 @@ export default function ResultScreen() {
 
       {/* Alt buton */}
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.finishButton} onPress={() => router.replace('/')}>
-          <Ionicons name="add-circle-outline" size={22} color="#FFF" style={{ marginRight: 8 }} />
-          <Text style={styles.finishButtonText}>Yeni Fikir Başlat</Text>
+        <TouchableOpacity style={styles.finishButton} onPress={() => router.replace('/')} activeOpacity={0.85}>
+          <LinearGradient
+            colors={['#8B00FF', '#6000CC']}
+            start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+            style={styles.finishButtonGradient}
+          >
+            <Ionicons name="add-circle-outline" size={22} color="#FFF" style={{ marginRight: 8 }} />
+            <Text style={styles.finishButtonText}>Yeni Fikir Başlat</Text>
+          </LinearGradient>
         </TouchableOpacity>
       </View>
     </LinearGradient>
@@ -186,8 +192,9 @@ const styles = StyleSheet.create({
   footer: {
     position: 'absolute', bottom: 30, left: 20, right: 20,
   },
-  finishButton: {
-    backgroundColor: '#7000FF', borderRadius: 16, height: 58,
+  finishButton: { borderRadius: 16, overflow: 'hidden' },
+  finishButtonGradient: {
+    height: 58,
     flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
   },
   finishButtonText: { color: '#FFF', fontSize: 17, fontWeight: '700' },

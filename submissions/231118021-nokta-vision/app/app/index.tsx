@@ -82,7 +82,7 @@ export default function WelcomeScreen() {
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={idea.trim() ? ['#8B00FF', '#6000CC'] : ['#2A2A2A', '#1A1A1A']}
+                colors={idea.trim() ? ['#9D00FF', '#6000CC'] : ['#2A2A2A', '#1A1A1A']}
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
                 style={styles.buttonGradient}
               >
