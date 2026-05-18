@@ -98,7 +98,7 @@ Uygulamanın kullanımını ve tüm özelliklerini tanıtan 60 saniyelik demo vi
 
 | Açıklama | Bağlantı / Dosya Yolu |
 | :--- | :--- |
-| 🎥 **YouTube 60 sn Demo Videosu** | [YouTube Video Bağlantısı (İzlemek için tıklayın)](https://youtube.com/shorts/S0M6sqqnHxM?feature=share) |
+| 🎥 **YouTube 60 sn Demo Videosu** | [YouTube Video Bağlantısı (İzlemek için tıklayın)](https://youtube.com/shorts/6xAk-MK4q00?si=MwsYn0j9_Os7zTip) |
 | 🤖 **Android Uygulama Paketi (APK)** | [`app-release.apk`](file:///c:/Users/Monster/OneDrive/Desktop/nokta/submissions/231118021-nokta-vision/app-release.apk) |
 
 ---
