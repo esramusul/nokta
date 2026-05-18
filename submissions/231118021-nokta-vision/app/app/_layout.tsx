@@ -1,4 +1,4 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { DarkTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack, usePathname } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
@@ -6,11 +6,14 @@ import { View } from 'react-native';
 
 // Audit Widget imports
 import { AuditWidget } from '@xtatistix/mobile-audit';
+import type { AuditNote } from '@xtatistix/mobile-audit';
 import { captureScreen, captureRef } from 'react-native-view-shot';
-import * as FileSystem from 'expo-file-system';
+import { Paths, File } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
+
+const AUDIT_STORAGE_KEY = 'audit_notes_v1';
 
 export default function RootLayout() {
   const pathname = usePathname();
@@ -19,24 +22,34 @@ export default function RootLayout() {
     captureScreen: async () => await captureScreen({ format: 'png', quality: 0.8 }),
     captureRef: async (ref: any) => await captureRef(ref, { format: 'png', quality: 0.8 }),
     writeFile: async (filename: string, content: string) => {
-      const uri = FileSystem.documentDirectory + filename;
-      await FileSystem.writeAsStringAsync(uri, content);
-      return uri;
+      const file = new File(Paths.document, filename);
+      file.write(content);
+      return file.uri;
     },
     writeFileBinary: async (filename: string, base64: string) => {
-      const uri = FileSystem.documentDirectory + filename;
-      await FileSystem.writeAsStringAsync(uri, base64, { encoding: FileSystem.EncodingType.Base64 });
-      return uri;
+      const bytes = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+      const file = new File(Paths.document, filename);
+      file.write(bytes);
+      return file.uri;
     },
     shareFile: async (uri: string) => {
       await Sharing.shareAsync(uri);
     },
     storage: {
-      get: async (key: string) => await AsyncStorage.getItem(key),
-      set: async (key: string, val: string) => await AsyncStorage.setItem(key, val)
+      loadNotes: async (): Promise<AuditNote[]> => {
+        try {
+          const raw = await AsyncStorage.getItem(AUDIT_STORAGE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch {
+          return [];
+        }
+      },
+      saveNotes: async (notes: AuditNote[]): Promise<void> => {
+        await AsyncStorage.setItem(AUDIT_STORAGE_KEY, JSON.stringify(notes));
+      },
     },
     currentScreen: pathname || 'unknown',
-    BugIcon: <Ionicons name="bug" size={24} color="white" />
+    BugIcon: <Ionicons name="bug" size={24} color="white" />,
   };
 
   return (
