@@ -7,10 +7,10 @@
 ## Özet
 | Cycle | Ekran | Hipotez | Sonuç | Değişen Dosya | Test | Commit |
 |---|---|---|---|---|---|---|
-| 1 | index | CTA buton gradient'i daha parlak olmalı | ✅ success | `app/index.tsx` | Görsel kontrast arttı | `a1f2c3d` |
-| 2 | interview | Placeholder metni neredeyse görünmüyor | ✅ success | `app/interview.tsx` | Okunabilirlik arttı | `b2e3f4a` |
-| 3 | result | "Yeni Fikir Başlat" butonu diğer ekranlarla uyumsuz (flat renk) | ✅ success | `app/result.tsx` | Gradient eklendi, tutarlılık sağlandı | `c3g5h6b` |
-| 4 | expert | Expert ekranında back button yok hipotezi | ❌ rollback | — | Back button zaten mevcut (`router.back()`), değişiklik gerekmiyor | — |
+| 1 | index | CTA buton gradient'i daha parlak olmalı | ✅ success | `app/index.tsx` | Görsel kontrast arttı | `088d9c3` |
+| 2 | interview | Placeholder metni neredeyse görünmüyor | ✅ success | `app/interview.tsx` | Okunabilirlik arttı | `9ba702f` |
+| 3 | result | "Yeni Fikir Başlat" butonu diğer ekranlarla uyumsuz (flat renk) | ✅ success | `app/result.tsx` | Gradient eklendi, tutarlılık sağlandı | `e4c634a` |
+| 4 | expert | Expert ekranında back button yok hipotezi | ❌ rollback | — | Back button zaten mevcut (`router.back()`), değişiklik gerekmiyor | `7d12efc` |
 
 ---
 
